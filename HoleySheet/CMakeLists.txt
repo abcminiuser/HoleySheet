@@ -1,11 +1,11 @@
-﻿cmake_minimum_required (VERSION 3.8)
+﻿cmake_minimum_required (VERSION 3.16)
 
 if (MSVC)
     list (APPEND CMAKE_PREFIX_PATH ${CMAKE_SOURCE_DIR}/Vendor)
     set(SFML_STATIC_LIBRARIES TRUE)
 endif ()
 
-find_package (SFML REQUIRED COMPONENTS graphics)
+find_package (SFML 3 REQUIRED COMPONENTS Graphics)
 
 add_executable (HoleySheet
     SpritePacker.cpp
@@ -13,7 +13,7 @@ add_executable (HoleySheet
 
 target_include_directories (HoleySheet PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_compile_features (HoleySheet PUBLIC cxx_std_17)
-target_link_libraries (HoleySheet PUBLIC sfml-graphics)
+target_link_libraries (HoleySheet PUBLIC SFML::Graphics)
 
 if (MSVC)
     target_compile_options (HoleySheet PUBLIC /W3 /WX)
